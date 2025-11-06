@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manoj Naik | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    header {
+      background: #111;
+      color: white;
+      padding: 15px 0;
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo span {
+      color: #1e90ff;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #1e90ff;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url('manoj.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 50px 70px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      max-width: 700px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .hero-content h1 span {
+      color: #1e90ff;
+      vertical-align: baseline;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+      margin-top: 15px;
+      color: #f5f5f5;
+    }
+
+    .buttons {
+      margin-top: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 25px;
+      margin: 0 10px;
+      border-radius: 30px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .btn-outline {
+      border: 2px solid #1e90ff;
+      color: #1e90ff;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: #1e90ff;
+      color: white;
+    }
+
+    .btn-primary {
+      background: #1e90ff;
+      color: white;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      border: 2px solid #1e90ff;
+      color: #1e90ff;
+    }
+
+    /* Typing Animation */
+    .typing {
+      border-right: 3px solid #1e90ff;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: blink 0.8s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content {
+        width: 90%;
+        padding: 30px 20px;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="container">
+      <h1 class="logo"><span>MANOJ</span> NAIK</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>I’m <span class="typing"></span></h1>
+      <p>I’m a Developer with extensive experience in building websites and apps.</p>
+      <div class="buttons">
+        <a href="projects.html" class="btn btn-outline">My Work</a>
+        <a href="hireme.html" class="btn btn-primary">Hire Me</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const roles = ["a Developer", "a Designer", "an Innovator"];
+    let roleIndex = 0;
+    let charIndex = 0;
+    const typingElement = document.querySelector(".typing");
+
+    function type() {
+      if (charIndex < roles[roleIndex].length) {
+        typingElement.textContent += roles[roleIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 150);
+      } else {
+        setTimeout(erase, 1000);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        typingElement.textContent = roles[roleIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, 100);
+      } else {
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(type, 500);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      if (roles.length) setTimeout(type, 500);
+    });
+  </script>
+</body>
+</html>
